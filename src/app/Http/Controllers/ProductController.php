@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\Season;
 use Illuminate\Http\Request;
+use App\Http\Requests\ProductRequest;
 
 class ProductController extends Controller
 {
@@ -22,11 +23,8 @@ class ProductController extends Controller
         return view('show', compact('product', 'seasons', 'product_seasons'));
     }
 
-    public function update(Request $request)
+    public function update(ProductRequest $request)
     {
-        if ($request->has('back')) {
-            return redirect('/products');
-        }
         $product = Product::find($request->id);
         $form = $request->only(['name', 'price', 'image', 'description']);
         $seasons = $request->only(['season']);

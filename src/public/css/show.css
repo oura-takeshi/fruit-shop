@@ -39,12 +39,6 @@
     margin-bottom: 10px;
 }
 
-.update-form__row p {
-    font-size: 1.6rem;
-    margin-top: 0;
-    margin-bottom: 10px;
-}
-
 .update-form__row {
     margin-bottom: 20px;
 }
@@ -130,4 +124,9 @@
     width: 100%;
     height: 100%;
     z-index: 1;
+}
+
+.update-form__error-p {
+    font-size: 1.4rem;
+    color: #FD0707;
 }
