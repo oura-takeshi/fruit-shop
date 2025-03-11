@@ -10,21 +10,22 @@
     <p class="hierarchy-page"><span>商品一覧</span>&nbsp;&gt;&nbsp;{{ $product->name }}</p>
     <div class="show-inner">
         <form class="update-form" action="/products/{{ $product->id }}/update" method="post">
+            @csrf
             <div class="update-form__flexbox">
                 <div class="update-form__column">
                     <div class="update-form__card-img">
                         <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}">
                     </div>
-                    <input type="file" value="" id="">
+                    <input type="file" name="image">
                 </div>
                 <div class="update-form__column">
                     <div class="update-form__row">
                         <label class="update-form__row-label" for="name">商品名</label>
-                        <input class="update-form__row-text" type="text" id="name" value="{{ $product->name }}">
+                        <input class="update-form__row-text" type="text" id="name" name="name" value="{{ $product->name }}" placeholder="商品名を入力">
                     </div>
                     <div class="update-form__row">
                         <label class="update-form__row-label" for="price">値段</label>
-                        <input class="update-form__row-text" type="text" id="price" value="{{ $product->price }}">
+                        <input class="update-form__row-text" type="text" id="price" name="price" value="{{ $product->price }}" placeholder="値段を入力">
                     </div>
                     <div class="update-form__row">
                         <p>季節</p>
@@ -45,11 +46,11 @@
             </div>
             <div class="update-form__description">
                 <label class="update-form__description-label" for="description">商品説明</label>
-                <textarea class="update-form__description-textarea" id="description">{{ $product->description }}</textarea>
+                <textarea class="update-form__description-textarea" id="description" name="description" placeholder="商品の説明を入力">{{ $product->description }}</textarea>
             </div>
             <div class="update-form__action">
                 <div class="update-form__button-inner">
-                    <button class="update-form__button--back button" name="back">戻る</button>
+                    <button class="update-form__button--back button" name="back" value="back">戻る</button>
                     <button class="update-form__button button">変更を保存</button>
                 </div>
                 <div class="delete-form__action">
