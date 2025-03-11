@@ -10,22 +10,23 @@
     <div class="product-top">
         <h2 class="product-top__heading">商品一覧</h2>
         <div class="product-create">
-            <form action="" class="product-create__action">
-                <button class="product-create__submit button">+&nbsp;商品を追加</button>
+            <form class="product-create__action" action="/products/register" method="get">
+                <button class="product-create__button button">+&nbsp;商品を追加</button>
             </form>
         </div>
     </div>
     <div class="product-inner">
         <div class="search-form">
-            <form action="" class="search-form__action">
+            <form class="search-form__action" action="/products/search" method="get">
                 <input type="text" class="search-form__name-input" placeholder="商品名で検索">
-                <button type="submit" class="search-form__submit button">検索</button>
+                <button class="search-form__button button">検索</button>
             </form>
         </div>
         <div class="product-intro">
             <div class="product-intro__cards">
                 @foreach ($products as $product)
                 <div class="product-intro__card">
+                    <a href="/products/{{ $product->id }}"></a>
                     <div class="product-intro__card-img">
                         <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}">
                     </div>
