@@ -32,4 +32,10 @@ class ProductController extends Controller
         $product->seasons()->sync($seasons['season']);
         return redirect('/products');
     }
+
+    public function delete(Request $request)
+    {
+        Product::find($request->id)->delete();
+        return redirect('/products');
+    }
 }
