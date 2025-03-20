@@ -8,7 +8,11 @@
 
 <div class="index">
     <div class="product-top">
+        @if ($input)
+        <h2 class="product-top__heading">“{{ $input }}”の商品一覧</h2>
+        @else
         <h2 class="product-top__heading">商品一覧</h2>
+        @endif
         <div class="product-create">
             <form class="product-create__action" action="/products/register" method="get">
                 <button class="product-create__button button">+&nbsp;商品を追加</button>
@@ -17,8 +21,9 @@
     </div>
     <div class="product-inner">
         <div class="search-form">
-            <form class="search-form__action" action="/products/search" method="get">
-                <input type="text" class="search-form__name-input" placeholder="商品名で検索">
+            <form class="search-form__action" action="/products/search" method="post">
+                @csrf
+                <input type="text" class="search-form__name-input" name="input" value="{{ $input }}" placeholder="商品名で検索">
                 <button class="search-form__button button">検索</button>
             </form>
         </div>

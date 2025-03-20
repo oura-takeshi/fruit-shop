@@ -12,7 +12,15 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::Paginate(6);
-        return view('index', compact('products'));
+        $input = null;
+        return view('index', compact('input', 'products'));
+    }
+
+    public function search(Request $request)
+    {
+        $products = Product::where('name', 'LIKE', "%{$request->input}%")->paginate(6);
+        $input = $request->input;
+        return view('index', compact('input', 'products'));
     }
 
     public function show($id)
