@@ -8,7 +8,7 @@
 
 <div class="index">
     <div class="product-top">
-        @if ($input)
+        @if ($input !== null)
         <h2 class="product-top__heading">“{{ $input }}”の商品一覧</h2>
         @else
         <h2 class="product-top__heading">商品一覧</h2>

@@ -26,6 +26,9 @@ class ProductController extends Controller
     public function show($id)
     {
         $product = Product::find($id);
+        if ($product == null) {
+            return redirect('/products');
+        }
         $seasons = Season::all();
         $product_seasons = $product->seasons()->get();
         return view('show', compact('product', 'seasons', 'product_seasons'));
